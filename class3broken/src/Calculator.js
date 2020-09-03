@@ -30,11 +30,11 @@ class Calculator extends React.Component {
     const {x, y, z, i, options} = this.state;
     return (
       <>
-        <input  onChange={this.handleX}  value={this.handleNum(x)}/>
+        <input  onChange={this.handleX} name="x" value={this.handleNum}/>
         <select onChange={this.handleOp} value={i}>
           {options.map((option, i) => <option key={i} value={i}>{option}</option>)}
         </select>
-        <input onChange={this.handleY} value={y}/>
+        <input onChange={this.handleY} name="y" value={y}/>
         <span> = {(z !== null) ? z : " result"}</span>
         <button onClick={this.handleCle}>Clear</button>
       </>
