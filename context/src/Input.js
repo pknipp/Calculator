@@ -4,19 +4,11 @@ import CalculatorContext from "./CalculatorContext";
 class Input extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      num: ""
-    }
   }
 
   static contextType = CalculatorContext;
 
-  handleInput = async e => {
-    const val = e.target.value;
-    const name = e.target.name;
-    debugger;
-    await this.setState({num: val}, () => this.context.updateInput(name, val))
-  };
+  handleInput = e => this.context.updateInput(e.target.name, e.target.value);
 
   render() {
     return (
