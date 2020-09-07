@@ -1,47 +1,25 @@
 import React from "react";
+import Input from "./Input";
+import Operation from "./Operation";
 
 class Calculator extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      z: null,
-      x: "",
-      y: "",
-      options: ["choose op","+","-","*","/"],
-      i: 0,
-    }
+  constructor(props) {
+    super(props);
   }
-
-  handleInput = e => {
-    const newNum = {};
-    newNum[e.target.name] = e.target.value;
-    this.setState(newNum, this.handleCalc);
-    // Why does the following 1-liner generate an error message?
-    //this.setState({`${e.target.name}`: Number(e.target.value)}), this.handleCalc);
-  }
-  handleOp  = e => this.setState({i: Number(e.target.value)}, this.handleCalc);
-  handleCalc = () => {
-    let [i,x,y] = [this.state.i, this.state.x, this.state.y];
-    const NaNs = ["", "-", "-."];
-    if (NaNs.includes(x) || NaNs.includes(y)) return
-    x = Number(x);
-    y = Number(y);
-    const zs = [null, x + y, x - y, x * y, (y !== 0) ? x/y : "NoCanDo"];
-    this.setState({z: zs[i]});
-  }
-  handleCle = e => this.setState({z: "", x: "", y: "" });
+  testHandle = () => console.log("hello world");
 
   render() {
-    const {i, x, y, z } = this.state;
+    const {i, x, y, z } = this.props.state;
+    debugger
+//    console.log(this.state);
     return (
       <div>
-        <input onChange={this.handleInput} placeholder="1st input" name="x" value={x}/>
-        <select onChange={this.handleOp} value={i}>
-          {this.state.options.map((option, i) => <option key={i} value={i}>{option}</option>)}
-        </select>
-        <input onChange={this.handleInput} placeholder="2nd input" name="y" value={y}/>
+        <Input key="x" name="x" />
+        <Operation i={i}/>
+        <Input key="y" name="y" />
         <span> = {(z !== null) ? z : " result"}</span>
-        <button onClick={this.handleCle}>Clear</button>
+        <button onClick={this.props.state.handleCle}>Clear</button>
+        {/* <button onClick={this.testHandle}>Clear</button> */}
       </div>
     )
   }
