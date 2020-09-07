@@ -1,28 +1,64 @@
 import React from "react";
+import CalculatorContext from "./CalculatorContext";
 import Input from "./Input";
 import Operation from "./Operation";
+import Clear from "./Clear";
 
-class Calculator extends React.Component {
-  constructor(props) {
-    super(props);
+const Calculator = ({x, y, z, i}) => {
+  debugger
+  return (
+    <>
+      <Input key="x" name="x" num={x} />
+      <Operation i={i}/>
+      <Input key="y" name="y" num={y} />
+      <span> = {(z !== null) ? z : " result"}</span>
+      <Clear />
+    </>
+  )
+}
+
+class CalculatorWithContext extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      x: "",
+      y: "",
+      z: null,
+      i: 0,
+      updateInput: this.updateInput,
+      updateOp: this.updateOp,
+      clear: this.clear
+    }
   }
-  testHandle = () => console.log("hello world");
+
+  updateInput = (name, num) => {
+    const newNum = {};
+    newNum[name] = num;
+    this.setState(newNum, this.calc);
+  }
+
+  updateOp  = i => this.setState({i}, this.calc);
+
+  clear = () => this.setState({x: "", y: "", z: null, i: 0});
+
+  calc = (x = this.state.x, y = this.state.y, i = this.state.i) => {
+    debugger
+    const NaNs = ["", ".","-","-."];
+    if (NaNs.includes(x) || NaNs.includes(y)) return
+    x = Number(x);
+    y = Number(y);
+    const zs = [null, x + y, x - y, x * y, (y !== 0) ? x/y : "NoCanDo"];
+    this.setState({z: zs[i]});
+  }
 
   render() {
-    const {i, x, y, z } = this.props.state;
     debugger
-//    console.log(this.state);
     return (
-      <div>
-        <Input key="x" name="x" />
-        <Operation i={i}/>
-        <Input key="y" name="y" />
-        <span> = {(z !== null) ? z : " result"}</span>
-        <button onClick={this.props.state.handleCle}>Clear</button>
-        {/* <button onClick={this.testHandle}>Clear</button> */}
-      </div>
-    )
+      <CalculatorContext.Provider value={this.state}>
+        <Calculator x={this.state.x} y={this.state.y} z={this.state.z} i={this.state.i}/>
+      </CalculatorContext.Provider>
+    );
   }
 }
 
-export default Calculator
+export default CalculatorWithContext

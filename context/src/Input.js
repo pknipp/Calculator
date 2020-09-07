@@ -9,25 +9,25 @@ class Input extends React.Component {
     }
   }
 
+  static contextType = CalculatorContext;
+
   handleInput = async e => {
     const val = e.target.value;
     const name = e.target.name;
-    await this.setState({num: val}, () => this.props.handleInput(name, val))
-//    this.setState(newNum, () => console.log("done!"));
+    debugger;
+    await this.setState({num: val}, () => this.context.updateInput(name, val))
   };
 
   render() {
     return (
-      <input onChange={this.handleInput} name={this.props.name} placeholder="number" value={this.state.num}/>
+      <input onChange={this.handleInput} name={this.props.name} placeholder="number" value={this.props.num}/>
     )
   }
 }
 
 const InputWithContext = props => (
   <CalculatorContext.Consumer>
-    {value => {
-      return <Input handleInput={value.handleInput} name={props.name} />;
-    }}
+    {value => <Input updateInput={value.updateInput} name={props.name} num={props.num} /> }
   </CalculatorContext.Consumer>
 );
 
