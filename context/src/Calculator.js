@@ -5,7 +5,6 @@ import Operation from "./Operation";
 import Clear from "./Clear";
 
 const Calculator = ({x, y, z, i}) => {
-  debugger
   return (
     <>
       <Input key="x" name="x" num={x} />
@@ -18,17 +17,9 @@ const Calculator = ({x, y, z, i}) => {
 }
 
 class CalculatorWithContext extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      x: "",
-      y: "",
-      z: null,
-      i: 0,
-      updateInput: this.updateInput,
-      updateOp: this.updateOp,
-      clear: this.clear
-    }
+  constructor() {super();
+    this.state = {x: "", y: "", z: null, i: 0,
+      updateInput: this.updateInput, updateOp: this.updateOp, clear: this.clear}
   }
 
   updateInput = (name, num) => {
@@ -42,7 +33,6 @@ class CalculatorWithContext extends React.Component {
   clear = () => this.setState({x: "", y: "", z: null, i: 0});
 
   calc = (x = this.state.x, y = this.state.y, i = this.state.i) => {
-    debugger
     const NaNs = ["", ".","-","-."];
     if (NaNs.includes(x) || NaNs.includes(y)) return
     x = Number(x);
@@ -52,7 +42,6 @@ class CalculatorWithContext extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <CalculatorContext.Provider value={this.state}>
         <Calculator x={this.state.x} y={this.state.y} z={this.state.z} i={this.state.i}/>
