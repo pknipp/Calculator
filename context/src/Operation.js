@@ -2,9 +2,11 @@ import React from "react";
 import CalculatorContext from "./CalculatorContext";
 
 class Operation extends React.Component {
-  constructor(props) {super(props)}
-  static contextType = CalculatorContext;
-  handleOp = e => this.context.updateOp(e.target.value);
+  // static contextType = CalculatorContext;
+  //handleOp = e => this.context.updateOp(e.target.value);
+  //2 lines above are an alternative - if this remains a class - to the one below
+  handleOp = e => this.props.updateOp(e.target.value);
+
   render () {
     const options = ["choose op", "+", "-", "*", "/"];
     return (

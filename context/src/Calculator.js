@@ -27,11 +27,11 @@ class CalculatorWithContext extends React.Component {
     newNum[name] = num;
     this.setState(newNum, this.calc);
   }
-
   updateOp  = i => this.setState({i}, this.calc);
-
-  clear = () => this.setState({x: "", y: "", z: null, i: 0});
-
+  clear = () => {
+    debugger
+    this.setState({x: "", y: "", z: null, i: 0})
+  };
   calc = (x = this.state.x, y = this.state.y, i = this.state.i) => {
     const NaNs = ["", ".","-","-."];
     if (NaNs.includes(x) || NaNs.includes(y)) return
@@ -40,14 +40,12 @@ class CalculatorWithContext extends React.Component {
     const zs = [null, x + y, x - y, x * y, (y !== 0) ? x/y : "NoCanDo"];
     this.setState({z: zs[i]});
   }
-
   render() {
-    return (
+      debugger;
+      return (
       <CalculatorContext.Provider value={this.state}>
         <Calculator x={this.state.x} y={this.state.y} z={this.state.z} i={this.state.i}/>
-      </CalculatorContext.Provider>
-    );
-  }
+      </CalculatorContext.Provider>)}
 }
 
 export default CalculatorWithContext
