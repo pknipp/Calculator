@@ -1,12 +1,12 @@
 import React from "react";
 import CalculatorContext from "./CalculatorContext";
 
-const Operation = props => {
+const Operation = ({ updateOp, i }) => {
   const options = ["choose op", "+", "-", "*", "/"];
-  const handleOp = e => props.updateOp(e.target.value);
+  const handleOp = e => updateOp(e.target.value);
   return (
-    <select onChange={handleOp} value={props.i}>
-      {options.map((option, i) => <option key={i} value={i}>{option}</option>)}
+    <select onChange={handleOp} value={i}>
+      {options.map((option, index) => <option key={index} value={index}>{option}</option>)}
     </select>
   )
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import CalculatorContext from "./CalculatorContext";
 
-const Clear = props => <button onClick={props.clear}>Clear</button>
+const Clear = ({ clear }) => <button onClick={clear}>Clear</button>
 
 const ClearWithContext = () => (
   <CalculatorContext.Consumer>
