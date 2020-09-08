@@ -1,48 +1,47 @@
 import React from "react";
+import Input from "./Input";
+import Operation from "./Operation";
+import Clear from "./Clear";
 
 class Calculator extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      z: null,
-      x: "",
-      y: "",
-      options: ["choose op","+","-","*","/"],
-      i: 0,
-    }
+  constructor() {super();
+    this.state = {x: "", y: "", z: null, i: 0,
+      updateInput: this.updateInput, updateOp: this.updateOp, clear: this.clear}
   }
 
-  handleInput = e => {
+  updateInput = (name, num) => {
     const newNum = {};
-    newNum[e.target.name] = e.target.value;
-    this.setState(newNum, this.handleCalc);
-    // Why does the following 1-liner generate an error message?
-    //this.setState({`${e.target.name}`: Number(e.target.value)}), this.handleCalc);
+    newNum[name] = num;
+    this.setState(newNum, this.calc);
   }
-  handleOp  = e => this.setState({i: Number(e.target.value)}, this.handleCalc);
-  handleCalc = () => {
-    let [i,x,y] = [this.state.i, this.state.x, this.state.y];
-    const NaNs = ["", "-", "-."];
+
+  updateOp  = i => this.setState({i}, this.calc);
+
+  clear = () => {
+    debugger
+    this.setState({x: "", y: "", z: null, i: 0})
+  };
+
+  calc = () => {
+    let { x, y, i } = this.state;
+    const NaNs = ["", ".","-","-."];
     if (NaNs.includes(x) || NaNs.includes(y)) return
     x = Number(x);
     y = Number(y);
     const zs = [null, x + y, x - y, x * y, (y !== 0) ? x/y : "NoCanDo"];
     this.setState({z: zs[i]});
-  }
-  handleCle = e => this.setState({z: "", x: "", y: "" });
+  };
 
   render() {
-    const {i, x, y, z } = this.state;
+    const { x, y, z, i, updateInput, updateOp, clear } = this.state;
     return (
-      <div>
-        <input onChange={this.handleInput} placeholder="1st input" name="x" value={x}/>
-        <select onChange={this.handleOp} value={i}>
-          {this.state.options.map((option, i) => <option key={i} value={i}>{option}</option>)}
-        </select>
-        <input onChange={this.handleInput} placeholder="2nd input" name="y" value={y}/>
+      <>
+        <Input key="x" name="x" num={x} updateInput={updateInput} />
+        <Operation i={i} updateOp={updateOp} />
+        <Input key="y" name="y" num={y} updateInput={updateInput} />
         <span> = {(z !== null) ? z : " result"}</span>
-        <button onClick={this.handleCle}>Clear</button>
-      </div>
+        <Clear clear={clear} />
+      </>
     )
   }
 }
