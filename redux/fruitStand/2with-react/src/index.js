@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Calculator from './Calculator';
 import store from './store';
 
 window.store = store;
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Calculator />
   </React.StrictMode>,
   document.getElementById('root')
 );

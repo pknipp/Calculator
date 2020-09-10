@@ -1,11 +1,11 @@
-import { ADD_FRUIT, ADD_FRUITS, SELL_FRUIT, SELL_OUT } from '../actions/fruitActions';
+import { ADD_FRUIT, CHANGE_NUM, SELL_FRUIT, SELL_OUT } from '../actions/changeNum';
 
 const fruitReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_FRUIT:
       return [...state, action.fruit];
-    case ADD_FRUITS:
-      return [...state, ...action.fruits];
+    case CHANGE_NUM:
+      return action.num;
     case SELL_FRUIT:
       const index = state.indexOf(action.fruit);
       if (index !== -1) {
