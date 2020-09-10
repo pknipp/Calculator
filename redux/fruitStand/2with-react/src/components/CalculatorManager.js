@@ -11,7 +11,8 @@ class CalculatorManager extends React.Component {
         {/* <FruitList />
         <FruitSeller />
         <FruitQuickAdd /> */}
-        <Input />
+        <Input name="x" />
+        <Input name="y" />
       </>
     );
   }

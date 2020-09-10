@@ -12,20 +12,20 @@ class Input extends React.Component {
   }
 
   handleInput = (e) => {
-    this.setState({ num: e.target.value }, this.updateInput);
+    this.setState({ num: e.target.value }, this.updateInput(e.target.name));
   }
 
-  updateInput = () => {
+  updateInput = name => {
     const { num } = this.state;
     if (num) {
-      store.dispatch(changeNum(num));
+      store.dispatch(changeNum(num, name));
 //      this.setState({ num: '' });
     }
   }
 
   render() {
     return (
-      <input type="number" placeholder="Insert number" value={this.state.num} onChange={this.handleInput} style={{ width: 100 }}
+      <input type="number" placeholder="Insert number" value={this.state.num} onChange={this.handleInput} style={{ width: 100 }} name={this.props.name}
       />
     );
   }

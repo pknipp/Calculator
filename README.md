@@ -5,5 +5,5 @@
 - [x] react: parent class passes props (w/callbacks) to functional children
 - [x] react: parent class provides context to consumers which are also classes
 - [x] react: parent class provides context to consumers which are functions
-- [ ] redux: delegate calculations to the back-end?
+- [ ] redux: mirroring fruitstand app
 - [ ] react: hooks

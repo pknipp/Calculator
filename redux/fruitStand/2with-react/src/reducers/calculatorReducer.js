@@ -1,6 +1,6 @@
 import { ADD_FRUIT, CHANGE_NUM, SELL_FRUIT, SELL_OUT } from '../actions/changeNum';
 
-const fruitReducer = (state = [], action) => {
+const calculatorReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_FRUIT:
       return [...state, action.fruit];
@@ -20,4 +20,4 @@ const fruitReducer = (state = [], action) => {
   }
 };
 
-export default fruitReducer;
+export default calculatorReducer;

@@ -1,11 +1,11 @@
 import { createStore } from 'redux';
-import fruitReducer from './reducers/fruitReducer';
+import calculatorReducer from './reducers/calculatorReducer';
 import { loadState, saveState } from './localStorage';
 import throttle from 'lodash/throttle';
 
 const preloadedState = loadState();
 
-const store = createStore(fruitReducer, preloadedState);
+const store = createStore(calculatorReducer, preloadedState);
 
 // store.subscribe(() => {
 //   saveState(store.getState());
