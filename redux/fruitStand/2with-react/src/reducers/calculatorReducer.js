@@ -1,20 +1,11 @@
-import { ADD_FRUIT, CHANGE_NUM, SELL_FRUIT, SELL_OUT } from '../actions/changeNum';
+import { CHANGE_NUM, CHANGE_OP } from '../actions/change';
 
 const calculatorReducer = (state = [], action) => {
   switch (action.type) {
-    case ADD_FRUIT:
-      return [...state, action.fruit];
     case CHANGE_NUM:
       return action.num;
-    case SELL_FRUIT:
-      const index = state.indexOf(action.fruit);
-      if (index !== -1) {
-        // remove first instance of action.fruit
-        return [...state.slice(0, index), ...state.slice(index + 1)];
-      }
-      return state; // if action.fruit is not in state, return previous state
-    case SELL_OUT:
-      return [];
+    case CHANGE_OP:
+      return action.i;
     default:
       return state;
   }

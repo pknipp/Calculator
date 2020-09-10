@@ -3,6 +3,7 @@ import React from 'react';
 // import FruitSeller from './FruitSeller';
 // import FruitQuickAdd from './FruitQuickAdd';
 import Input from './Input';
+import Operation from './Operation';
 
 class CalculatorManager extends React.Component {
   render() {
@@ -12,6 +13,7 @@ class CalculatorManager extends React.Component {
         <FruitSeller />
         <FruitQuickAdd /> */}
         <Input name="x" />
+        <Operation />
         <Input name="y" />
       </>
     );

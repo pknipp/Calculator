@@ -1,18 +1,18 @@
 import React from 'react';
 import store from '../store';
-import { changeNum } from '../actions/changeNum';
+import { changeNum } from '../actions/change';
 
 class Input extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      num: '',
-    };
+  constructor(props) {super(props);
+    this.state = {num: ''};
   }
 
-  handleInput = (e) => {
-    this.setState({ num: e.target.value }, this.updateInput(e.target.name));
+  handleInput = e => {
+    const name = e.target.name
+    this.setState(
+      { num: e.target.value },
+      () => this.updateInput(name)
+    );
   }
 
   updateInput = name => {
@@ -25,8 +25,7 @@ class Input extends React.Component {
 
   render() {
     return (
-      <input type="number" placeholder="Insert number" value={this.state.num} onChange={this.handleInput} style={{ width: 100 }} name={this.props.name}
-      />
+      <input type="number" placeholder="Insert number" value={this.state.num} onChange={this.handleInput} style={{ width: 100 }} name={this.props.name} />
     );
   }
 }

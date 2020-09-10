@@ -1,6 +1,6 @@
 export const ADD_FRUIT = 'ADD_FRUIT';
 export const CHANGE_NUM = 'CHANGE_NUM';
-export const SELL_FRUIT = 'SELL_FRUIT';
+export const CHANGE_OP = 'CHANGE_OP';
 export const SELL_OUT = 'SELL_OUT';
 
 // export const addFruit = (fruit) => ({
@@ -13,6 +13,8 @@ export const changeNum = (num, name) => {
   newState[name] = num;
   return newState;
 };
+
+export const changeOp = i => ({type: CHANGE_OP, i});
 
 // export const sellFruit = (fruit) => ({
 //   type: SELL_FRUIT,
