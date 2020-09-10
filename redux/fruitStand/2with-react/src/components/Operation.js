@@ -8,11 +8,7 @@ class Operation extends React.Component {
   }
 
   handleop = e => this.setState({ i: e.target.value }, this.updateop);
-  updateop = () => {
-    const { i } = this.state;
-    store.dispatch(changeOp(i));
-//      this.setState({ i: 0 });
-  }
+  updateop = () => store.dispatch(changeOp(this.state.i));
 
   render() {
     const options = ["choose op", "+", "-", "*", "/"];

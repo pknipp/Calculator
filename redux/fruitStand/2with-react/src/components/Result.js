@@ -18,8 +18,8 @@ class Result extends React.Component {
     x = Number(x);
     y = Number(y);
     let z;
-    if (i && x && y) z = [null, x + y, x - y, x * y, (y !== 0) ? x/y : "NoCanDo"][i];
-    return <p>result = {(z !== null) ? z : " result"}</p>
+    if (i) z = [null, x + y, x - y, x * y, (y !== 0) ? x/y : "NoCanDo"][i];
+    return <span>result = {(z !== null) ? z : " result"}</span>
   }
 }
 
