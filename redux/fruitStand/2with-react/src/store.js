@@ -4,11 +4,11 @@ import calculatorReducer from './reducers/calculatorReducer';
 //import throttle from 'lodash/throttle';
 
 //const preloadedState = loadState();
-const preloadedState = {};
+const preloadedState = {i: 0};
 
 const store = createStore(calculatorReducer, preloadedState);
 
-// store.subscribe(() => saveState(store.getState()));
+//store.subscribe(() => saveState(store.getState()));
 
 // The lodash throttle function ensures that a function
 // is at most invoked once per every X milliseconds.
