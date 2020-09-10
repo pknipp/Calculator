@@ -1,11 +1,15 @@
 import { CHANGE_NUM, CHANGE_OP } from '../actions/change';
 
 const calculatorReducer = (state = [], action) => {
+  Object.freeze(state);
+  const nextState = { ...state };
   switch (action.type) {
     case CHANGE_NUM:
-      return action.num;
+      nextState[action.name] = action.num
+      return nextState;
     case CHANGE_OP:
-      return action.i;
+      nextState.i = action.i;
+      return nextState;
     default:
       return state;
   }

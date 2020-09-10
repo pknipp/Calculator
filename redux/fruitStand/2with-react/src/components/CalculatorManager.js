@@ -4,6 +4,7 @@ import React from 'react';
 // import FruitQuickAdd from './FruitQuickAdd';
 import Input from './Input';
 import Operation from './Operation';
+import Result from './Result';
 
 class CalculatorManager extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class CalculatorManager extends React.Component {
         <Input name="x" />
         <Operation />
         <Input name="y" />
+        <Result />
       </>
     );
   }
