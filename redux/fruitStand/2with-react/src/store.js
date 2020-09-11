@@ -4,7 +4,7 @@ import calculatorReducer from './reducers/calculatorReducer';
 //import throttle from 'lodash/throttle';
 
 //const preloadedState = loadState();
-const preloadedState = {i: 0};
+const preloadedState = {i: 0, x: "", y: ""};
 
 const store = createStore(calculatorReducer, preloadedState);
 

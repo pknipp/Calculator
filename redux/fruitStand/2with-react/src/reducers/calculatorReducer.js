@@ -1,7 +1,6 @@
 import { CHANGE_NUM, CHANGE_OP, CLEAR } from '../actions/change';
 
-const calculatorReducer = (state = {i: 0}, action) => {
-  debugger;
+const calculatorReducer = (state = {i: 0, x: "", y: ""}, action) => {
   Object.freeze(state);
   const nextState = { ...state };
   switch (action.type) {
@@ -12,8 +11,7 @@ const calculatorReducer = (state = {i: 0}, action) => {
       nextState.i = action.i;
       return nextState;
     case CLEAR:
-      debugger;
-      return {i: 0};
+      return {i: 0, x: "", y: ""};
     default:
       return state;
   }
