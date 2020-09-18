@@ -2,9 +2,9 @@ import React from "react";
 import CalculatorContext from "./CalculatorContext";
 
 class Operation extends React.Component {
-  // static contextType = CalculatorContext;
-  //handleOp = e => this.context.updateOp(e.target.value);
-  //2 lines above are an alternative - if this remains a class - to the one below
+  static contextType = CalculatorContext;
+  handleOp = e => this.context.updateOp(e.target.value);
+  //1 line below is an alternative even if this becomes a function
   handleOp = e => this.props.updateOp(e.target.value);
 
   render () {

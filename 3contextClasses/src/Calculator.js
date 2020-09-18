@@ -41,7 +41,6 @@ class CalculatorWithContext extends React.Component {
     this.setState({z: zs[i]});
   }
   render() {
-      debugger;
       return (
       <CalculatorContext.Provider value={this.state}>
         <Calculator x={this.state.x} y={this.state.y} z={this.state.z} i={this.state.i}/>
