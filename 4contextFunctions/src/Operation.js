@@ -11,11 +11,10 @@ const Operation = ({ updateOp, i }) => {
   )
 }
 
-const OperationWithContext = props => {
-  return (
+const OperationWithContext = ({ i }) => (
   <CalculatorContext.Consumer>
-    {value =>  <Operation updateOp={value.updateOp} i={props.i}/>}
+    {value =>  <Operation updateOp={value.updateOp} i={i}/>}
   </CalculatorContext.Consumer>
-)};
+);
 
 export default OperationWithContext;

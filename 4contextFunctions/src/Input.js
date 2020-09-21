@@ -6,9 +6,9 @@ const Input = ({ updateInput, name, num }) => {
   return <input onChange={handleInput} name={name} placeholder="number" value={num} />
 }
 
-const InputWithContext = props => (
+const InputWithContext = ({ name, num }) => (
   <CalculatorContext.Consumer>
-    {value => <Input updateInput={value.updateInput} name={props.name} num={props.num} /> }
+    {value => <Input updateInput={value.updateInput} name={name} num={num} /> }
   </CalculatorContext.Consumer>
 );
 

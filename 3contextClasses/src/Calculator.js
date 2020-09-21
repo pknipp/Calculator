@@ -4,11 +4,11 @@ import Input from "./Input";
 import Operation from "./Operation";
 import Clear from "./Clear";
 
-const Calculator = ({x, y, z, i}) => {
+const Calculator = ({ x, y, z }) => {
   return (
     <>
       <Input key="x" name="x" num={x} />
-      <Operation i={i}/>
+      <Operation />
       <Input key="y" name="y" num={y} />
       <span> = {(z !== null) ? z : " result"}</span>
       <Clear />
@@ -28,10 +28,7 @@ class CalculatorWithContext extends React.Component {
     this.setState(newNum, this.calc);
   }
   updateOp  = i => this.setState({i}, this.calc);
-  clear = () => {
-    debugger
-    this.setState({x: "", y: "", z: null, i: 0})
-  };
+  clear = () => this.setState({x: "", y: "", z: null, i: 0});
   calc = (x = this.state.x, y = this.state.y, i = this.state.i) => {
     const NaNs = ["", ".","-","-."];
     if (NaNs.includes(x) || NaNs.includes(y)) return
@@ -43,7 +40,7 @@ class CalculatorWithContext extends React.Component {
   render() {
       return (
       <CalculatorContext.Provider value={this.state}>
-        <Calculator x={this.state.x} y={this.state.y} z={this.state.z} i={this.state.i}/>
+        <Calculator x={this.state.x} y={this.state.y} z={this.state.z} />
       </CalculatorContext.Provider>)}
 }
 
