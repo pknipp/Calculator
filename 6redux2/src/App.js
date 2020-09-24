@@ -1,11 +1,15 @@
 import React from 'react';
-import Calculator from './components/Calculator';
+import { Provider } from "react-redux";
+import CalculatorContainer from './components/CalculatorContainer';
 
-function App() {
+const App = ({ store }) => {
+  debugger;
   return (
     <>
       <h1>4-function calculator</h1>
-      <Calculator />
+      <Provider store={store}>
+        <CalculatorContainer />
+     </Provider>
     </>
   );
 }
