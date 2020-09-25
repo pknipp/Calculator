@@ -4,7 +4,7 @@ import Operation from './Operation';
 import Result from './Result';
 import Clear from './Clear';
 
-const Calculator = ({ x, y, i, handleInput, handleOp, handleClear }) => {
+const Calculator = ({ x, y, i, changeNum, changeOp, clear }) => {
   debugger;
   let z;
   if (x === "" || y === "" || i === 0) {
@@ -16,11 +16,11 @@ const Calculator = ({ x, y, i, handleInput, handleOp, handleClear }) => {
   }
   return (
     <>
-      <Input name="x" value={x} handleInput={handleInput} />
-      <Operation value={i} handleOp={handleOp} />
-      <Input name="y" value={y} handleInput={handleInput} />
+      <Input name="x" value={x} changeNum={changeNum} />
+      <Operation value={i} changeOp={changeOp} />
+      <Input name="y" value={y} changeNum={changeNum} />
       <Result value={z} />
-      <Clear handleClear={handleClear} />
+      <Clear handleClear={clear} />
     </>
   );
 }
