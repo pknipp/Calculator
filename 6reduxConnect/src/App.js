@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from "react-redux";
-import CalculatorContainer from './components/CalculatorContainer';
+import Calculator from './components/Calculator';
 
 const App = ({ store }) => {
   debugger;
@@ -8,7 +8,7 @@ const App = ({ store }) => {
     <>
       <h1>4-function calculator</h1>
       <Provider store={store}>
-        <CalculatorContainer />
+        <Calculator />
      </Provider>
     </>
   );

@@ -1,11 +1,10 @@
 import React from 'react';
+import { connect } from "react-redux";
 import Input from './Input';
 import Operation from './Operation';
-import Result from './Result';
 import Clear from './Clear';
 
-const Calculator = ({ x, y, i, changeNum, changeOp, clear }) => {
-  debugger;
+const Calculator = ({ x, y, i}) => {
   let z;
   if (x === "" || y === "" || i === 0) {
     z = null;
@@ -16,12 +15,15 @@ const Calculator = ({ x, y, i, changeNum, changeOp, clear }) => {
   }
   return (
     <>
-      <Input name="x" value={x} changeNum={changeNum} />
-      <Operation value={i} changeOp={changeOp} />
-      <Input name="y" value={y} changeNum={changeNum} />
-      <Result value={z} />
-      <Clear handleClear={clear} />
+      <Input name="x" />
+      <Operation />
+      <Input name="y" />
+      <span> = {(z !== null) ? z : " result"}</span>
+      <Clear />
     </>
   );
 }
-export default Calculator;
+
+const msp = ({ x, y, i }) => ({ x, y, i });
+const mdp = dispatch => ({});
+export default connect(msp, mdp)(Calculator);

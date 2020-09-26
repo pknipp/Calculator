@@ -1,10 +1,16 @@
 import React from "react";
-const Operation = ({ changeOp, value }) => {
+import { connect } from "react-redux";
+import { changeOp } from "../actions/change";
+
+const Operation = ({ i, changeOp }) => {
   const options = ["choose op", "+", "-", "*", "/"];
   return (
-    <select onChange={changeOp} value={value}>
+    <select onChange={changeOp} value={i}>
       {options.map((option, index) => <option key={index} value={index}>{option}</option>)}
     </select>
   );
 }
-export default Operation;
+
+const msp = ({ i }) => ({ i });
+const mdp = dispatch => ({changeOp: e => dispatch(changeOp(e.target.value))})
+export default connect(msp, mdp)(Operation);
