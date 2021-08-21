@@ -1,5 +1,5 @@
 # Calculator
-4-function calculator implemented several different ways:
+4-function calculator implemented several different ways :
 - [ ] html & pug: these may not be possible.
 - [ ] pre-jsx react: probably not possible
 - [x] react: single class
